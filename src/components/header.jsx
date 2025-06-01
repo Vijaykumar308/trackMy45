@@ -23,7 +23,7 @@ export default function Header() {
             <Settings className="h-5 w-5" />
           </button>
           <div className="h-8 w-8 rounded-full bg-orange-500 flex items-center justify-center text-white">
-            <span className="text-sm font-medium">JP</span>
+            <span className="text-sm font-medium">VJ</span>
           </div>
         </div>
       </div>

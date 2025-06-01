@@ -1,9 +1,24 @@
 import { useState } from "react"
+import { isValidInput } from "../utlis/helper";
+import { MAX_HOUR_TIME, MAX_MINUNTS_TIME, MAX_SECONDS_TIME } from "../utlis/constants";
 
 export default function LogSession() {
-  const [hours, setHours] = useState("00")
-  const [minutes, setMinutes] = useState("00")
-  const [seconds, setSeconds] = useState("00")
+  const [hours, setHours] = useState();
+  const [minutes, setMinutes] = useState();
+  const [seconds, setSeconds] = useState();
+
+  const [weeklyTime, setWeeklyTime] = useState([]);
+
+  const handleAddSession = (hours, minutes, seconds) => {
+    // console.log(`${hours}:${minutes}:${seconds}`);
+    setWeeklyTime(prev => [...prev, `${hours}:${minutes}:${seconds}`]);
+    setHours("00");
+    setMinutes("00");
+    setSeconds("00");
+  };
+
+  console.log(weeklyTime);
+
 
   return (
     <div className="bg-white rounded-lg shadow p-6">
@@ -11,9 +26,10 @@ export default function LogSession() {
       <div className="flex justify-center items-center space-x-2 mb-8">
         <div className="text-center">
           <input
-            type="text"
+            type="number"
+            placeholder="00"
             value={hours}
-            onChange={(e) => setHours(e.target.value)}
+            onChange={(e) => setHours(prev => e.target.value <= MAX_HOUR_TIME ? e.target.value : prev )}
             className="w-16 text-center text-2xl border border-gray-300 rounded py-2"
           />
           <div className="text-sm text-gray-500 mt-1">Hours</div>
@@ -22,8 +38,9 @@ export default function LogSession() {
         <div className="text-center">
           <input
             type="text"
+            placeholder="00"
             value={minutes}
-            onChange={(e) => setMinutes(e.target.value)}
+            onChange={(e) => setMinutes(prev => e.target.value <= MAX_MINUNTS_TIME ? e.target.value : prev)}
             className="w-16 text-center text-2xl border border-gray-300 rounded py-2"
           />
           <div className="text-sm text-gray-500 mt-1">Minutes</div>
@@ -32,14 +49,18 @@ export default function LogSession() {
         <div className="text-center">
           <input
             type="text"
+            placeholder="00"
             value={seconds}
-            onChange={(e) => setSeconds(e.target.value)}
+            onChange={(e) => setSeconds(prev => e.target.value <= MAX_SECONDS_TIME ? e.target.value : prev)}
             className="w-16 text-center text-2xl border border-gray-300 rounded py-2"
           />
           <div className="text-sm text-gray-500 mt-1">Seconds</div>
         </div>
       </div>
-      <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-md font-medium">
+      <button 
+      className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 cursor-pointer rounded-md font-medium"
+      onClick={() => handleAddSession(hours, minutes, seconds)}
+      >
         Add Session
       </button>
     </div>

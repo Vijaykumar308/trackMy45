@@ -12,7 +12,7 @@ export default function DailyOverview() {
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-xl font-semibold mb-6">Daily Overview</h2>
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-4 gap-6">
         {days.map((day) => (
           <div key={day.date} className="text-center p-2 border border-gray-100 rounded-md">
             <div className="text-xs text-gray-500">{day.date}</div>
