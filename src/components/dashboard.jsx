@@ -8,6 +8,7 @@ import RecentSessions from "./recent-sessions"
 import QuickAdd from "./quick-add"
 
 export default function Dashboard() {
+
   return (
     <div className="flex h-screen bg-gray-50">
       <Sidebar />
@@ -17,7 +18,7 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <LogSession />
             <WeeklyGoal />
-            <DailyOverview />
+            <DailyOverview  />
             <WeeklyActivity />
             <RecentSessions />
             <QuickAdd />

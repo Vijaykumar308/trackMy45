@@ -1,24 +1,33 @@
-import { useState } from "react"
-import { isValidInput } from "../utlis/helper";
+import { useContext, useEffect, useState } from "react"
 import { MAX_HOUR_TIME, MAX_MINUNTS_TIME, MAX_SECONDS_TIME } from "../utlis/constants";
+import { stateManagerContext } from "../utlis/StateManager";
 
 export default function LogSession() {
   const [hours, setHours] = useState();
   const [minutes, setMinutes] = useState();
   const [seconds, setSeconds] = useState();
-
   const [weeklyTime, setWeeklyTime] = useState([]);
 
-  const handleAddSession = (hours, minutes, seconds) => {
-    // console.log(`${hours}:${minutes}:${seconds}`);
+  const {globalState, setGlobalState} = useContext(stateManagerContext);
+
+  const updateGlobalState = (state) => {
+    setGlobalState({weeklyTime: state});
+  }
+
+  const handleAddSession = (hours=0, minutes=0, seconds=0) => {
+    if(!hours && !minutes && !seconds){
+      alert("Input not found");
+      return;
+    } 
     setWeeklyTime(prev => [...prev, `${hours}:${minutes}:${seconds}`]);
-    setHours("00");
-    setMinutes("00");
-    setSeconds("00");
+    setHours("");
+    setMinutes("");
+    setSeconds("");
   };
 
-  console.log(weeklyTime);
-
+  useEffect(() => {
+    updateGlobalState(weeklyTime);
+  },[weeklyTime])
 
   return (
     <div className="bg-white rounded-lg shadow p-6">
