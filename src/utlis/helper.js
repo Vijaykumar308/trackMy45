@@ -67,3 +67,10 @@ function formatSecondsToTime(seconds) {
     ].join(':');
 }
 
+export function subtractTimes(time1, time2) {
+    const total1 = time1;
+    const total2 = time2;
+    const diff = total1 - total2;
+
+    return formatSecondsToTime(diff);
+}

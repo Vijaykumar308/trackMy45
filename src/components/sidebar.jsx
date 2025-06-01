@@ -8,8 +8,8 @@ export default function Sidebar() {
 
   const menuItems = [
     { id: "dashboard", icon: LayoutDashboard, label: "Dashboard" },
-    { id: "history", icon: History, label: "History" },
-    { id: "reports", icon: BarChart2, label: "Reports" },
+    // { id: "history", icon: History, label: "History" },
+    // { id: "reports", icon: BarChart2, label: "Reports" },
     { id: "settings", icon: Settings, label: "Settings" },
     { id: "help", icon: HelpCircle, label: "Help" },
   ]

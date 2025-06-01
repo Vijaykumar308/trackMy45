@@ -6,6 +6,7 @@ import DailyOverview from "./daily-overview"
 import WeeklyActivity from "./weekly-activity"
 import RecentSessions from "./recent-sessions"
 import QuickAdd from "./quick-add"
+import Footer from "./Footer"
 
 export default function Dashboard() {
 
@@ -19,11 +20,12 @@ export default function Dashboard() {
             <LogSession />
             <WeeklyGoal />
             <DailyOverview  />
-            <WeeklyActivity />
-            <RecentSessions />
+            {/* <WeeklyActivity /> */}
+            {/* <RecentSessions /> */}
             <QuickAdd />
           </div>
         </main>
+            <Footer />
       </div>
     </div>
   )
