@@ -42,13 +42,13 @@ export const sumTimes = (timeArray)  => {
 }
 
 
-function parseTimeToSeconds(timeStr) {
-    const parts = timeStr.split(':').map(Number).reverse();
+export function parseTimeToSeconds(timeStr) {
+    const parts = timeStr?.split(':').map(Number).reverse();
     let seconds = 0;
 
-    if (parts.length > 0) seconds += parts[0];         // SS
-    if (parts.length > 1) seconds += parts[1] * 60;     // MM
-    if (parts.length > 2) seconds += parts[2] * 3600;   // HH
+    if (parts?.length > 0) seconds += parts[0];         // SS
+    if (parts?.length > 1) seconds += parts[1] * 60;     // MM
+    if (parts?.length > 2) seconds += parts[2] * 3600;   // HH
 
     return seconds;
 }
@@ -67,10 +67,3 @@ function formatSecondsToTime(seconds) {
     ].join(':');
 }
 
-function subtractTimes(time1, time2) {
-    const total1 = parseTimeToSeconds(time1);
-    const total2 = parseTimeToSeconds(time2);
-    const diff = total1 - total2;
-
-    return formatSecondsToTime(diff);
-}
