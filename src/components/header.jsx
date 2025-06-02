@@ -1,28 +1,29 @@
-"use client"
-
 import { Search, HelpCircle, Bell, Settings } from "lucide-react"
 import { useState } from "react"
+import RandomTagline from "./Taglines";
 
 export default function Header() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
 
   return (
     <header className="bg-white border-b border-gray-200 py-2 md:py-3 px-3 md:px-4">
       <div className="flex items-center justify-between">
         {/* Desktop Search - Hidden on mobile */}
-        <div className="hidden md:block relative w-64">
-          <input
+        <div className="hidden md:block relative">
+          {/* <input
             type="text"
             placeholder="Search sessions..."
             className="w-full pl-10 pr-4 py-1.5 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          /> */}
+          {/* <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" /> */}
+          <RandomTagline />
         </div>
 
         {/* Mobile Search Button - Only visible when search is not open */}
         {!isSearchOpen && (
           <button className="md:hidden text-gray-500 hover:text-gray-700" onClick={() => setIsSearchOpen(true)}>
-            <Search className="h-5 w-5" />
+            {/* <Search className="h-5 w-5" /> */}
           </button>
         )}
 

@@ -61,7 +61,7 @@ export default function Sidebar() {
                 </svg>
               </div>
               {(!isCollapsed || window.innerWidth < 768) && (
-                <span className="ml-2 text-xl font-semibold whitespace-nowrap">FocusFlow</span>
+                <span className="ml-2 text-xl font-semibold whitespace-nowrap"> Office Clockr  </span>
               )}
             </div>
           </div>
