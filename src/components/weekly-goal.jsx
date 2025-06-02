@@ -1,15 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { stateManagerContext } from "../utlis/StateManager"
 import { subtractTimes, sumTimes } from "../utlis/helper";
-import { DAYS_IN_WEEK, SHIFT_HOUR_PER_DAY } from "../utlis/constants";
 import {parseTimeToSeconds} from "../utlis/helper";
 
 export default function WeeklyGoal() {
   const {globalState} = useContext(stateManagerContext);
   const totalTime = sumTimes(globalState?.weeklyTime);
   const [timeStatusDesc, setTimeStatusDescp] = useState(0);
-  // const shiftHoursPerDay = SHIFT_HOUR_PER_DAY;
-  // const daysInWeek = DAYS_IN_WEEK;
 
   function compareTotalTime(totalTime, shiftHoursPerDay = "9:00:00") {
     const totalAllowedSeconds = parseTimeToSeconds(shiftHoursPerDay) * globalState?.weeklyTime?.length;
