@@ -1,34 +1,21 @@
 import { useContext, useEffect, useState } from "react"
 import { stateManagerContext } from "../utlis/StateManager"
-import { subtractTimes, sumTimes } from "../utlis/helper";
-import {parseTimeToSeconds} from "../utlis/helper";
+import { compareTotalTime, sumTimes } from "../utlis/helper";
 
 export default function WeeklyGoal() {
   const {globalState} = useContext(stateManagerContext);
-  const totalTime = sumTimes(globalState?.weeklyTime);
-  const [timeStatusDesc, setTimeStatusDescp] = useState(0);
+  const totalTime = sumTimes((globalState?.weeklyTime || "00"));
+  const [timeStatusDesc, setTimeStatusDescp] = useState("");
 
-  function compareTotalTime(totalTime, shiftHoursPerDay = "9:00:00") {
-    const totalAllowedSeconds = parseTimeToSeconds(shiftHoursPerDay) * globalState?.weeklyTime?.length;
-    console.log('time should be in secds',totalAllowedSeconds);
-    const totalTimeSeconds = parseTimeToSeconds(totalTime);
-
-    if (totalTimeSeconds > totalAllowedSeconds) {
-        return subtractTimes(totalTimeSeconds, totalAllowedSeconds) + " (over) ";
-    } else if (totalTimeSeconds < totalAllowedSeconds) {
-        return subtractTimes(totalAllowedSeconds, totalTimeSeconds) + " (less)";
-    } else {
-        return subtractTimes(totalAllowedSeconds, totalAllowedSeconds);
-    }
-}
-
+  console.log(globalState?.weeklyTime?.length);
+  let numberOfDays;
   useEffect(() => {
-    const timeStatus = compareTotalTime(totalTime)
+    numberOfDays = globalState?.weeklyTime?.length || 0;
+    const timeStatus = compareTotalTime(totalTime, numberOfDays);
     setTimeStatusDescp(timeStatus);
   }, [totalTime])
 
 
-  console.log(globalState);  
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-xl font-semibold text-center mb-4">Weekly Goal Progress</h2>

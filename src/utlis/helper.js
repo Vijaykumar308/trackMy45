@@ -4,7 +4,6 @@ export const isValidInput = (e, compareWith) => {
       ];
 
       const currentValue = e.target.value;
-      console.log(currentValue);
       // Allow navigation and control keys
       if (allowedKeys.includes(e.key)) return;
 
@@ -16,8 +15,6 @@ export const isValidInput = (e, compareWith) => {
 export const sumTimes = (timeArray)  => {
   if(!timeArray) return;
     let totalSeconds = 0;
-
-    console.log(timeArray);
 
     for (const time of timeArray) {
         const parts = time.split(':').map(Number).reverse();
@@ -40,6 +37,21 @@ export const sumTimes = (timeArray)  => {
         String(seconds).padStart(2, '0')
     ].join(':');
 }
+
+export function compareTotalTime(totalTime, noOfDays, shiftHoursPerDay = "9:00:00") {
+    const totalAllowedSeconds = parseTimeToSeconds(shiftHoursPerDay) * noOfDays; // globalState?.weeklyTime?.length;
+    const totalTimeSeconds = parseTimeToSeconds(totalTime);
+
+    if (totalTimeSeconds > totalAllowedSeconds) {
+        return subtractTimes(totalTimeSeconds, totalAllowedSeconds) + " (over) ";
+    } else if (totalTimeSeconds < totalAllowedSeconds) {
+        return subtractTimes(totalAllowedSeconds, totalTimeSeconds) + " (less)";
+    } else {
+        return subtractTimes(totalAllowedSeconds, totalAllowedSeconds);
+    }
+}
+
+
 
 
 export function parseTimeToSeconds(timeStr) {
@@ -74,3 +86,5 @@ export function subtractTimes(time1, time2) {
 
     return formatSecondsToTime(diff);
 }
+
+

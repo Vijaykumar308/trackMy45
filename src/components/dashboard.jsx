@@ -19,11 +19,11 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <LogSession />
             <WeeklyGoal />
-            <DailyOverview  />
             {/* <WeeklyActivity /> */}
             {/* <RecentSessions /> */}
-            <QuickAdd />
+            {/* <QuickAdd /> */}
           </div>
+            <DailyOverview  />
         </main>
             <Footer />
       </div>

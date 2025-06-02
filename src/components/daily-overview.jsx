@@ -1,21 +1,12 @@
 import { useContext } from "react"
 import { stateManagerContext } from "../utlis/StateManager"
+import { compareTotalTime } from "../utlis/helper";
 
 export default function DailyOverview() {
   const {globalState, setGlobalState} = useContext(stateManagerContext);
 
-  console.log('in dailyoverview: ',globalState);
-
-  //   const handleDelete = (indexToDelete) => {
-  //   const updatedTimes = globalState?.weeklyTime?.filter((_, index) => index !== indexToDelete);
-  //   setGlobalState({
-  //     weeklyTime: updatedTimes
-  //   });
-  // };
-
-   const handleDelete = (indexToDelete) => {
+  const handleDelete = (indexToDelete) => {
     const weeklyTimeList = JSON.parse(JSON.stringify(globalState?.weeklyTime))
-    console.log('in function:',weeklyTimeList);
     const updatedWeeklyList = weeklyTimeList?.filter((_, idx) => idx !== indexToDelete);
 
    setGlobalState({
@@ -30,10 +21,10 @@ export default function DailyOverview() {
         {
           globalState?.weeklyTime?.length === 0 ? "No Data"  :
         
-        globalState?.weeklyTime?.map((day,index) => (
+        globalState?.weeklyTime?.map((time,index) => (
           <div key={index} className="relative text-center p-2 border border-gray-100 rounded-md">
-            {/* <div className="text-xs text-gray-500">{day.date}</div> */}
-            <div className="font-medium">{day}</div>
+            {/* <div className="text-xs text-gray-500">{time.date}</div> */}
+            <div className="font-medium">{time}</div>
 
              <button
                 onClick={() => handleDelete(index)}
@@ -42,7 +33,7 @@ export default function DailyOverview() {
                 ×
               </button>
 
-            <div className="text-xs text-orange-500">under</div>
+            <div className="text-xs text-orange-500">{compareTotalTime(time, 1)}</div>
           </div>
         ))}
       </div>
