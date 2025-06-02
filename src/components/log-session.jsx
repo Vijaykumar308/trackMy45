@@ -32,7 +32,7 @@ export default function LogSession() {
       <div className="flex justify-center items-center space-x-2 mb-8">
         <div className="text-center">
           <input
-            type="number"
+            type="text"
             placeholder="00"
             value={hours}
             onChange={(e) =>
@@ -42,7 +42,7 @@ export default function LogSession() {
           />
           <div className="text-sm text-gray-500 mt-1">Hours</div>
         </div>
-        <div className="text-3xl text-gray-400">:</div>
+        <div className="text-3xl text-gray-400 mb-8">:</div>
         <div className="text-center">
           <input
             type="text"
@@ -55,7 +55,7 @@ export default function LogSession() {
           />
           <div className="text-sm text-gray-500 mt-1">Minutes</div>
         </div>
-        <div className="text-3xl text-gray-400">:</div>
+        <div className="text-3xl text-gray-400 mb-8">:</div>
         <div className="text-center">
           <input
             type="text"

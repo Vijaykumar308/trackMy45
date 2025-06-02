@@ -7,7 +7,6 @@ export default function WeeklyGoal() {
   const totalTime = sumTimes((globalState?.weeklyTime || "00"));
   const [timeStatusDesc, setTimeStatusDescp] = useState("");
 
-  console.log(globalState?.weeklyTime?.length);
   let numberOfDays;
   useEffect(() => {
     numberOfDays = globalState?.weeklyTime?.length || 0;

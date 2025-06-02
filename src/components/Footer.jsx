@@ -1,6 +1,13 @@
-import React from 'react';
+import { useEffect, useState } from "react";
 
 function Footer() {
+  const [nextYear, setNextYear] = useState('');
+
+  useEffect(() => {
+    const date = new Date().getFullYear() + 1;
+    setNextYear(date);
+  },[])
+
   return (
     <footer className="bg-white text-gray-700 border-t border-gray-200 py-6">
       <div className="max-w-screen-xl mx-auto px-4 text-center space-y-2">
@@ -14,7 +21,7 @@ function Footer() {
           </a>
         </p>
         <p className="text-xs md:text-sm text-gray-500">
-          &copy; 2025–2026 All rights reserved.
+          &copy; 2025–{nextYear} All rights reserved.
         </p>
       </div>
     </footer>
