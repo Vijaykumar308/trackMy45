@@ -15,7 +15,7 @@ export default function DailyOverview() {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-6">
+    <div className="bg-white rounded-lg shadow p-6 mt-7">
       <h2 className="text-xl font-semibold mb-6">Daily Overview</h2>
       <div className="grid grid-cols-4 gap-6">
         {
