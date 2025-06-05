@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { DARK_TEXT_COLOR, LIGHT_TEXT_COLOR } from '../utlis/constants';
 
 const taglines = [
   "Work 45, Live the Rest!",
@@ -14,6 +16,8 @@ const taglines = [
 
 const RandomTagline = () => {
   const [currentTagline, setCurrentTagline] = useState('');
+  const { theme } = useContext(ThemeContext);
+  const textColor = theme === 'dark' ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR;
 
   useEffect(() => {
     const updateTagline = () => {
@@ -24,11 +28,11 @@ const RandomTagline = () => {
     updateTagline(); // initial load
     const interval = setInterval(updateTagline, 5000);
 
-    return () => clearInterval(interval); // cleanup on unmount
+    return () => clearInterval(interval); // cleanup
   }, []);
 
   return (
-    <div style={{ fontSize: '1rem', fontWeight: 'bold', marginTop: '20px' }}>
+    <div className={`${textColor} font-bold text-base mt-5`}>
       {currentTagline}
     </div>
   );

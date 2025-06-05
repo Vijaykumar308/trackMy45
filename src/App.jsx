@@ -1,5 +1,6 @@
 import './App.css'
 import Dashboard from './components/dashboard'
+import { ThemeProvider } from './contexts/ThemeContext';
 import { StateManager } from './utlis/StateManager';
 
 function App() {
@@ -7,9 +8,11 @@ function App() {
   return (
     <>
      <div>
-      <StateManager >
-        <Dashboard />
-      </StateManager>
+       <ThemeProvider>
+        <StateManager >
+          <Dashboard />
+        </StateManager>
+       </ThemeProvider>
      </div>
     </>
   )

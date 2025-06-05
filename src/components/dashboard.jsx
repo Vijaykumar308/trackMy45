@@ -1,17 +1,21 @@
-import Sidebar from "./sidebar"
-import Header from "./header"
-import LogSession from "./log-session"
-import WeeklyGoal from "./weekly-goal"
-import DailyOverview from "./daily-overview"
-import WeeklyActivity from "./weekly-activity"
-import RecentSessions from "./recent-sessions"
-import QuickAdd from "./quick-add"
-import Footer from "./Footer"
+import { useContext } from "react";
+import Sidebar from "./sidebar";
+import Header from "./header";
+import LogSession from "./log-session";
+import WeeklyGoal from "./weekly-goal";
+import DailyOverview from "./daily-overview";
+import Footer from "./Footer";
+import { ThemeContext } from "../contexts/ThemeContext";
+import { DARK_BG_COLOR, LIGHT_BG_COLOR, DARK_TEXT_COLOR, LIGHT_TEXT_COLOR } from "../utlis/constants";
 
 export default function Dashboard() {
+  const { theme } = useContext(ThemeContext);
+
+  const bgColor = theme === "dark" ? DARK_BG_COLOR : LIGHT_BG_COLOR;
+  const textColor = theme === "dark" ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR;
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className={`flex h-screen ${bgColor} ${textColor}`}>
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header />
@@ -23,10 +27,10 @@ export default function Dashboard() {
             {/* <RecentSessions /> */}
             {/* <QuickAdd /> */}
           </div>
-            <DailyOverview  />
+          <DailyOverview />
         </main>
-            <Footer />
+        <Footer />
       </div>
     </div>
-  )
+  );
 }
