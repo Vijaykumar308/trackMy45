@@ -64,7 +64,7 @@ export default function Header() {
             )}
           </button>
 
-          <button className={`p-1 ${textColor} hover:text-gray-700`}>
+          {/* <button className={`p-1 ${textColor} hover:text-gray-700`}>
             <HelpCircle className="h-5 w-5" />
           </button>
           <button className={`p-1 ${textColor} hover:text-gray-700`}>
@@ -72,7 +72,7 @@ export default function Header() {
           </button>
           <button className={`p-1 ${textColor} hover:text-gray-700`}>
             <Settings className="h-5 w-5" />
-          </button>
+          </button> */}
 
           <div className="h-8 w-8 rounded-full bg-orange-500 flex items-center justify-center text-white">
             <span className="text-sm font-medium">VJ</span>
